@@ -2,6 +2,7 @@
 
 from Model.Constantes import *
 
+
 #
 # Ce fichier implémente les données/fonctions concernant le pion
 # dans le jeu du Puissance 4
@@ -72,3 +73,15 @@ def setCouleurPion(pion: dict, color: int) -> None:
 
     pion[const.COULEUR] = color
     return None
+
+
+def getIdPion(pion: dict) -> int | None:
+    """
+    Fonction récupérant l'identifiant d'un pion
+    :param pion: Dictionnaire représentant un pion
+    :return: Identifiant du pion (None ou entier)
+    :raise TypeError: Si le paramètre n'est pas un pion
+    """
+    if not type_pion(pion):
+        raise TypeError('getIdPion : Le paramètre n\'est pas un pion')
+    return pion[const.ID]
