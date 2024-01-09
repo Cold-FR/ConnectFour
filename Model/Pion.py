@@ -63,6 +63,7 @@ def setCouleurPion(pion: dict, color: int) -> None:
     :return: Ne retourne rien
     :raise TypeError: Si le premier paramètre n'est pas un pion
     :raise TypeError: Si le second paramètre n'est pas un entier
+    :raise ValueError: Si le second paramètre n'est pas une couleur valide
     """
     if not type_pion(pion):
         raise TypeError('setCouleurPion : Le premier paramètre n\'est pas un pion')
