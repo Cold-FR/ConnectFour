@@ -36,7 +36,7 @@ def construirePion(color: int) -> dict:
     """
     if type(color) is not int:
         raise TypeError('construirePion : Le paramètre n\'est pas de type entier')
-    if color is not in const.COULEURS:
+    if color not in const.COULEURS:
         raise ValueError(f'construirePion : la couleur ({color}) n\'est pas correcte')
 
     return {const.COULEUR: color, const.ID: None}
