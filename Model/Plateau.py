@@ -77,3 +77,28 @@ def placerPionPlateau(plateau: list, pion: dict, numCol: int) -> int:
         plateau[i][numCol] = pion
 
     return i
+
+
+def toStringPlateau(plateau: list) -> str:
+    """
+    Fonction retournant une chaîne de caractères représentant le plateau
+    :param plateau: Tableau 2D représentant un plateau
+    :return: Chaîne de caractère représentant le plateau
+    """
+    result = ''
+    for i in range(const.NB_LINES):
+        line = '|'
+        for j in range(const.NB_COLUMNS):
+            pion = ' '
+            if plateau[i][j] is not None:
+                if plateau[i][j][const.COULEUR] == const.JAUNE:
+                    pion = '\x1B[43m \x1B[0m'
+                elif plateau[i][j][const.COULEUR] == const.ROUGE:
+                    pion = '\x1B[41m \x1B[0m'
+
+            line += f'{pion}|'
+        result += f'{line}\n'
+    result += f'{"-" * ((const.NB_COLUMNS * 2) + 1)}\n'
+    result += f' {" ".join([str(i) for i in range(const.NB_COLUMNS)])} '
+
+    return result
