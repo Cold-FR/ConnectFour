@@ -9,6 +9,7 @@ pion = construirePion(const.JAUNE)
 line = placerPionPlateau(p, pion, 2)
 print("Placement d’un pion en colonne 2. Numéro de ligne :", line)
 print(p)
+
 # Essais sur les couleurs
 print("\x1B[43m \x1B[0m : carré jaune ")
 print("\x1B[41m \x1B[0m : carré rouge ")
@@ -20,3 +21,4 @@ for _ in range(20):
                       randint(0, const.NB_COLUMNS - 1))
 
 print(toStringPlateau(p))
+print(detecter4horizontalPlateau(p, const.JAUNE))
