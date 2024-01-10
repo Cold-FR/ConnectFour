@@ -138,6 +138,45 @@ def detecter4horizontalPlateau(plateau: list, color: int) -> list:
                 result.extend(pions)
                 found = True
             j += 1
+
+    return result
+
+
+def detecter4verticalPlateau(plateau: list, color: int) -> list:
+    """
+    Fonction cherchant 4 pions de la couleur spécifiée alignés verticalement
+    :param plateau: Tableau 2D représentant un plateau
+    :param color: Couleur des pions
+    :return: Liste vide s'il n'y aucune série de 4 pions alignés,
+    sinon liste de pions de couleur color alignés par 4 verticalement
+    :raise TypeError: Si le premier paramètre n’est pas un plateau
+    :raise TypeError: Si le second paramètre n’est pas un entier
+    :raise ValueError: Si le second paramètre n'est pas une couleur valide
+    """
+    if not type_plateau(plateau):
+        raise TypeError('detecter4horizontalPlateau : Le premier paramètre ne correspond pas à un plateau')
+    if type(color) is not int:
+        raise TypeError('detecter4horizontalPlateau : Le second paramètre n\'est pas un entier')
+    if color not in const.COULEURS:
+        raise ValueError(f'detecter4horizontalPlateau : Le second paramètre ({color}) n\'est pas une couleur')
+
+    result = []
+    for i in range(const.NB_COLUMNS):
+        j = const.NB_LINES - 1
+        found = False
+        while j >= 0 and not found:
+            pions = []
+            k = j + 1
+            while k >= 1 and plateau[k - 1][i] is not None and plateau[k - 1][i][
+                const.COULEUR] == color:
+                k -= 1
+                if len(pions) < 4:
+                    pions.append(plateau[k][i])
+            if len(pions) == 4:
+                result.extend(pions)
+                found = True
+            j -= 1
     print(len(result))
 
     return result
+
