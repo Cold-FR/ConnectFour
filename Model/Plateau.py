@@ -84,7 +84,10 @@ def toStringPlateau(plateau: list) -> str:
     Fonction retournant une chaîne de caractères représentant le plateau
     :param plateau: Tableau 2D représentant un plateau
     :return: Chaîne de caractère représentant le plateau
+    :raise TypeError: Si le premier paramètre n’est pas un plateau
     """
+    if not type_plateau(plateau):
+        raise TypeError('toStringPlateau : Le paramètre ne correspond pas à un plateau')
     result = ''
     for i in range(const.NB_LINES):
         line = '|'
